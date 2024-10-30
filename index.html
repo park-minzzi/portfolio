@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- script -->
+    <script src="./script/jquery.min.js"></script>
+    <script src="./script/script.js"></script>
+
+    <title>박민지의 포트폴리오</title>
+    <style>
+        @charset "utf-8";
+
+        @font-face {
+            font-family: 'EF_jejudoldam';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_jejudoldam.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'GmarketSansMedium';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @keyframes slideInLeft {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        body {
+            /* display: flex;
+    justify-content: center;
+    flex-direction: column; */
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'EF_jejudoldam';
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrap {
+            width: 100%;
+            margin: 0 auto;
+            position: absolute;
+        }
+
+        #wrap p {
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow: hidden;
+        }
+
+
+        #contents {
+            overflow-y: scroll;
+            height: 100vh;
+        }
+
+
+        #contents .content1 {
+            height: 918px;
+            background-color: #cac9c9;
+            position: relative;
+        }
+
+        .main-txt {
+            padding: 20px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 918px;
+        }
+
+        .text-bg1 {
+            font-family: 'GmarketSansMedium';
+            font-size: 360px;
+            font-weight: 700;
+            color: #fff;
+            /* text-shadow: 2px 20px 5px rgba(19, 0, 165, 0.7); */
+        }
+
+        .text-bg2 {
+            font-family: 'GmarketSansMedium';
+            font-size: 300px;
+            text-align: right;
+            font-weight: 900;
+            color: #fff;
+            /* text-shadow: 2px 20px 5px rgba(19, 0, 165, 0.7); */
+        }
+
+        .text-spacing-animation {
+            font-size: 200px;
+            animation: spacingAnimation 2s infinite;
+        }
+
+        .name {
+            width: 100%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 80px;
+        }
+
+        .name2 {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 100px;
+        }
+
+        #contents .content2 {
+            height: 918px;
+            text-align: right;
+            /* 오른쪽 정렬 */
+            position: relative;
+        }
+
+        #contents .content2 img {
+            height: 100%;
+            /* 높이를 100%로 설정 */
+            width: auto;
+            /* 가로 크기는 비율에 맞게 자동으로 조정 */
+            display: inline-block;
+            /* inline-block으로 변경 */
+
+        }
+
+        .txt {
+            position: absolute;
+            left: 14%;
+            top: 25%;
+            transform: translate(-50%, -50%);
+            text-align: left;
+            color: #fff;
+            text-shadow: 7px 7px 12px rgba(0, 0, 0, 0.7);
+            font-size: 79px;
+            line-height: 2;
+        }
+
+        #contents .content2 .img-point {
+            position: absolute;
+            /* 절대 위치 */
+            bottom: -4px;
+            /* content2의 하단에서 20px 위 */
+            left: 11%;
+            /* 수평 중앙으로 배치 */
+            transform: translateX(-50%);
+            /* 중앙 정렬 */
+            width: 128px;
+            /* img-point 이미지 크기 조절 */
+            height: auto;
+            /* 비율 유지 */
+        }
+
+        #contents .content2 .img-point img {
+            width: 100%;
+            /* img-point 안의 이미지 크기를 맞추기 */
+            height: auto;
+            /* 비율에 맞게 자동으로 높이 설정 */
+        }
+
+        #contents .content3 {
+            height: 918px;
+        }
+
+        #contents .content3 .projects-txt {
+            padding: 75px 0 30px 189px;
+            font-size: 50px;
+            color: #b7b5cc;
+        }
+
+        #contact-wrap {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #contact-wrap>ul {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            align-items: center;
+            margin-top: 27px;
+            justify-content: space-between;
+            z-index: 100;
+        }
+
+        #contact-wrap>ul>li {
+            border: 2.5px solid #705f5f;
+            border-radius: 10px;
+            width: 32.3%;
+            height: 280px;
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+        }
+
+        #contact-wrap>ul>li>a>h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #e6bdbd;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #contact-wrap>ul>li>span {
+            position: absolute;
+            top: 35%;
+            display: block;
+            width: 100%;
+            opacity: 0;
+            color: #000;
+            transition: opacity 0.5s ease;
+        }
+
+        #contact-wrap>ul>li>span>i {
+            font-size: 43px;
+        }
+
+        /* 스크롤을 위한 주요 컨테이너 */
+        .snap-container {
+            scroll-snap-type: y mandatory;
+            /* 수직 스냅 활성화 */
+            overflow-y: scroll;
+            /* 수직 스크롤 활성화 */
+            height: 100vh;
+            /* 컨테이너의 높이 설정 */
+        }
+
+        /* 스냅할 각 섹션 */
+        .snap-section {
+            height: 100vh;
+            /* 각 섹션이 전체 뷰포트 높이를 차지하도록 설정 */
+            scroll-snap-align: start;
+            /* 섹션의 시작 부분이 뷰포트의 시작 부분과 정렬되도록 설정 */
+        }
+
+        /* 선택 사항: 스크롤바 숨기기 */
+        .snap-container {
+            scrollbar-width: none;
+            /* Firefox용 */
+        }
+
+        .snap-container::-webkit-scrollbar {
+            display: none;
+            /* Chrome, Safari 및 Edge용 */
+        }
+
+        /* 
+.text-bg1, .text-bg2 {
+    animation: scaleEffect 1s ease-in-out infinite; 
+} */
+
+        /* .text-bg1, .text-bg2 {
+    animation: colorChange 2s infinite; 
+} */
+
+        /* .text-bg1 {
+    animation: slideInLeft 1s ease-in-out forwards;
+}
+
+.text-bg2 {
+    animation: slideInRight 1s ease-in-out forwards;
+} */
+
+
+        .name .portfolio {
+            letter-spacing: 0em;
+            /* 글자 간 간격 설정 */
+        }
+
+        .name .portfolio span {
+            opacity: 0;
+            display: inline-block;
+            animation: fade-in 0.5s forwards;
+        }
+
+        .name .portfolio span:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .name .portfolio span:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .name .portfolio span:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .name .portfolio span:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .name .portfolio span:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .name .portfolio span:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+
+        .name .portfolio span:nth-child(7) {
+            animation-delay: 0.6s;
+        }
+
+        .name .portfolio span:nth-child(8) {
+            animation-delay: 0.7s;
+        }
+
+        .name .portfolio span:nth-child(9) {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .txt {
+            opacity: 0;
+            animation: fade-in-text 1.5s ease-in-out forwards;
+            animation-delay: 1s;
+        }
+
+        @keyframes fade-in-text {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .snap-section {
+            opacity: 1;
+            transition: opacity 1s ease;
+        }
+
+        .snap-section.active {
+            opacity: 1;
+        }
+
+        .link-block {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            /* 기존 텍스트 색상 유지 */
+        }
+
+        .click {
+            display: inline-block;
+            padding: 10px 20px;
+            /* background-color: #999999; */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .click:hover {
+            color: #0056b3;
+            cursor: pointer;
+        }
+
+        /* popup */
+        .popup-view {
+            position: absolute;
+            left: 50%;
+            top: 49%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            height: 72%;
+            background-color: #8ec1ff;
+            border: 4px solid #0a4288;
+            padding: 20px;
+            display: none;
+        }
+
+        .popup-view h3,
+        .popup-view2 h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #0a4288;
+            color: #0a4288;
+            padding-bottom: 5px;
+        }
+
+        .popup-close {
+            position: absolute;
+            left: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+            background-color: #0a4288;
+            color: #fff;
+            padding: 8px 20px;
+        }
+
+
+        .popup-view2 {
+            position: absolute;
+            left: 50%;
+            top: 49%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            height: 72%;
+            background-color: #8ec1ff;
+            border: 4px solid #0a4288;
+            padding: 20px;
+            display: none;
+        }
+
+        .popup-close2 {
+            position: absolute;
+            left: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+            background-color: #0a4288;
+            color: #fff;
+            padding: 8px 20px;
+        }
+
+        h3,
+        h4 {
+            font-family: 'GmarketSansMedium';
+        }
+
+        .etc {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            margin-top: 40px;
+            color: #888585;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap" class="inner-container">
+        <header id="header">
+
+        </header>
+        <!-- //header-->
+        <main id="contents" class="snap-container">
+            <section class="content1 snap-section" data-animate="fade-in">
+                <div class="main-txt">
+                    <p class="text-bg1 text-spacing-animation">WEB</p>
+                    <p class="text-bg2 text-spacing-animation">Designer</p>
+                </div>
+                <span class="name">Park Min Ji<br>
+                    <span class="portfolio">
+                        <span>P</span>
+                        <span>o</span>
+                        <span>r</span>
+                        <span>t</span>
+                        <span>f</span>
+                        <span>o</span>
+                        <span>l</span>
+                        <span>i</span>
+                        <span>o</span>
+                    </span></span>
+            </section>
+            <section class="content2 snap-section" data-animate="fade-in">
+                <img src="./images/pmj.png" alt="배경이미지">
+                <span class="txt"><span style="color:#6d69ee;">Trendy</span>함 속에서도 <br>나만의 <span
+                        style="color: #ff9797;">개성</span>을 표현할 줄 아는 <br> <a class="click"
+                        href="./subpage/aboutme.html">박민지</a> 입니다.
+                    <p style="font-size: 18px;font-family: 'GmarketSansMedium'; color:black; text-shadow: none;">*이름 클릭
+                        시 소개 페이지로 이동합니다 !</p>
+                </span>
+                <div class="img-point">
+                    <img src="./images/pmj_point.png" alt="박민지">
+                </div>
+            </section>
+            <section class="content3 snap-section" data-animate="fade-in">
+                <div class="projects-txt">projects</div>
+                <section id="contact-wrap" class="section">
+                    <ul id="contact-content" class="animated2">
+                        <li class="contact-road">
+                            <a href="./projects/지산경시안/main.html" target="_blank" class="link-block">
+                                <h3>지역산업경제연구원</h3>
+                            </a>
+                        </li>
+                        <li class="contact-recruit popup-btn">
+                            <a href="#">
+                                <h3>팝업창<br>-빅데이터통합플랫폼</h3>
+                            </a>
+                        </li>
+                        <li class="contact-notice popup-btn2">
+                            <a href="#">
+                                <h3>팝업창<br>-상수도</h3>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="etc">
+                        <h3> *그 외에 작업물</h3>
+                        <h4>
+                            월간보고용 회의자료 ppt 디자인, 제안서 마스터파일 ppt, 퍼블리싱 등 작업을 하였습니다.
+                        </h4>
+                    </div>
+                </section>
+            </section>
+        </main>
+        <!-- //main -->
+
+        <footer id="footer">
+
+        </footer>
+        <!-- //footer -->
+        <div class="popup-view">
+            <h3>광주광역시 빅데이터 통합플랫폼</h3>
+            <img src="./images/pop-up-data.png" alt="팝업이미지" style="width: 86%;     margin-left: auto;
+            margin-right: auto;
+            display: block;">
+            <a href="#" class="popup-close" style="font-family: 'GmarketSansMedium';">닫기</a>
+        </div>
+        <div class="popup-view2">
+            <h3>광주광역시상수도</h3>
+            <img src="./images/pop-up-water.png" alt="팝업이미지" style=" width: 86%;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;">
+            <a href="#" class="popup-close2" style="font-family: 'GmarketSansMedium';">닫기</a>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
